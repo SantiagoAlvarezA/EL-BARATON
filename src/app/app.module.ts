@@ -20,12 +20,14 @@ import { RegisterComponent } from './pages/register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { LoginComponent } from './pages/login/login.component';
 library.add(fas);
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   {path: 'register', component:RegisterComponent },
+  {path: 'login', component:LoginComponent },
   { path: '**', component: Page404nofoundComponent }
 ]
 
@@ -37,6 +39,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     HomeComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
