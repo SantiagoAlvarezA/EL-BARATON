@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { AngularFireAuthModule } from '@angular/fire/auth';
+
 import { RouterModule, Routes } from '@angular/router';
 import { Page404nofoundComponent } from './pages/page404nofound/page404nofound.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -16,7 +17,10 @@ import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+library.add(fas);
 
 
 const appRoutes: Routes = [
@@ -43,6 +47,11 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+
+    FontAwesomeModule,
+
+
+    
 
 
   ],

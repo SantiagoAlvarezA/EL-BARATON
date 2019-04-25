@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  navburger = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  navMenu(){
+    this.navburger = !this.navburger;
   }
 
 }
