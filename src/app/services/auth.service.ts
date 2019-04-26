@@ -23,7 +23,7 @@ export class AuthService {
     return this.angularFireAuth.authState;
   }
 
-  public signIn = (email, password) => {
+  public signIn = (email='', password='') => {
 
     this.angularFireAuth.auth.signInWithEmailAndPassword(email, password)
       .then((response) => {
@@ -47,7 +47,7 @@ export class AuthService {
     this.router.navigate(['']);
     this.Toast.fire({
       type: 'success',
-      title: 'Se a cerrado sesión con exito'
+      title: 'A cerrado sesión con exito'
     })
   }
 
@@ -55,8 +55,9 @@ export class AuthService {
 
     this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((response) => {
-        user.id = response.user.uid;
-        this.db.database.ref('users/' + user.id).set(user);
+        user.uid = response.user.uid;
+        user.password = '';
+        this.db.database.ref('users/' + user.uid).set(user);
         this.Toast.fire({
           type: 'success',
           title: 'El usuario se a registrado con exito'
