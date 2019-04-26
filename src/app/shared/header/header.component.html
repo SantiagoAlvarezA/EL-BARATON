@@ -5,65 +5,32 @@
             <fa-icon icon="store" class="mr-2"></fa-icon>
             EL BARATON
         </a>
-
         <a class="navbar-item  ml-auto is-hidden-desktop  is-family-monospace has-text-weight-bold has-text-black has-text-centered"
-            routerLink="register" routerLinkActive="active">
+            routerLink="" routerLinkActive="active">
             <fa-icon icon="store" class="mr-2"></fa-icon>
             EL BARATON
         </a>
-
-
         <a role="button" class="navbar-burger burger " (click)="navMenu()" [ngClass]="{'is-active': navburger}"
             aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
         </a>
-
-
     </div>
 
     <div id="navbarBasicExample" class="navbar-menu" [ngClass]="{'is-active': navburger}">
-        <div class="navbar-start">
-            <a class="navbar-item">
-                Home
-            </a>
-
-            <a class="navbar-item">
-                Documentation
-            </a>
-
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    More
-                </a>
-
-                <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                        About
-                    </a>
-                    <a class="navbar-item">
-                        Jobs
-                    </a>
-                    <a class="navbar-item">
-                        Contact
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item">
-                        Report an issue
-                    </a>
-                </div>
-            </div>
-        </div>
-
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-primary" routerLink='login'>
-                        <strong>Sign up</strong>
+
+                    <a class="button is-primary" [ngClass]="{'is-sr-only': isAuthenticated}" routerLink="login" >
+                        <strong> Sign in </strong>
                     </a>
-                    <a class="button is-light">
-                        Log in
+                    <a class="button is-primary" [ngClass]="{'is-sr-only': !isAuthenticated}" (click)="signOut()">
+                        <strong> Sign out</strong>
+                    </a>
+                    <a class="button is-light" [ngClass]="{'is-sr-only': isAuthenticated}"  routerLink="register">
+                        Sign up
                     </a>
                 </div>
             </div>

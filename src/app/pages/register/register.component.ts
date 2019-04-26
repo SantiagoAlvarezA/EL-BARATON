@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../interfaces/user.interface';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +10,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  registerModal: boolean;
+  user: User = {};
+  EmailPaswword: boolean;
+  saveUser: boolean;
+
+  constructor(private router: Router, private auth: AuthService) {
+    this.registerModal = true;
+    this.EmailPaswword = true;
+    this.saveUser = false;
+  }
 
   ngOnInit() {
+  }
+  showRegisterModal() {
+    this.registerModal = false;
+    this.router.navigate(['']);
+
+  }
+  register(user: User) {
+    console.log(user);
+    this.auth.register(user.email, user.password, user);
+    // this.router.navigate(['login']);
+
+  }
+
+  tabEmailPass() {
+    this.EmailPaswword = true;
+    this.saveUser = false;
+  }
+
+  nextStep(user: User) {
+    console.log(user);
+
+    this.EmailPaswword = false;
+    this.saveUser = true;
   }
 
 }

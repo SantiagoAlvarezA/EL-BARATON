@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +9,26 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   navburger = false;
+  isAuthenticated: boolean = false;
 
-  constructor() { }
+  constructor(private auth: AuthService) {
+    auth.isAuthenticated().subscribe((result) => {
+      if (result && result.uid) {
+        this.isAuthenticated = true;
+      } else {
+        this.isAuthenticated = false;
+      }
+    });
+  }
 
   ngOnInit() {
   }
 
-  navMenu(){
+  navMenu() {
     this.navburger = !this.navburger;
   }
 
+  signOut() {
+    this.auth.signOut();
+  }
 }

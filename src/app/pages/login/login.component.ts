@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../../interfaces/user.interface';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,16 +10,40 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  loginModal:boolean;
-  constructor(private router:Router) {
+  isAuthenticated: boolean = false;
+  loginModal: boolean;
+  user: User = {};
+  constructor(private router: Router, private auth: AuthService) {
     this.loginModal = true;
-   }
+    auth.isAuthenticated().subscribe((result) => {
+      if (result && result.uid) {
+        this.isAuthenticated = true;
+      } else {
+        this.isAuthenticated = false;
+      }
+    });
+  }
 
   ngOnInit() {
   }
 
-  showLoginModal(){
+  showLoginModal() {
     this.loginModal = false;
     this.router.navigate(['']);
   }
+
+  createAnAcount() {
+    this.loginModal = false;
+    this.router.navigate(['register']);
+  }
+
+  login(user: User) {
+    console.log(user);
+    this.auth.signIn(user.email, user.password);
+  }
+
+  signOut() {
+    this.auth.signOut();
+  }
+
 }

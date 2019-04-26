@@ -61,7 +61,7 @@ export class AuthService {
           type: 'success',
           title: 'El usuario se a registrado con exito'
         })
-        this.router.navigate(['/']);
+        this.router.navigate(['']);
       })
       .catch((error) => {
         this.Toast.fire({

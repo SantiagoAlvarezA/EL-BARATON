@@ -1,3 +1,79 @@
-<p>
-  register works!
-</p>
+<div class="modal has-background-white" [ngClass]="{'is-active': registerModal}">
+  <div class="modal-background" (click)="showRegisterModal()"></div>
+  <div class="modal-card">
+
+    <header class="modal-card-head has-background-white">
+      <p class="modal-card-title">Login</p>
+      <button class="delete" aria-label="close" (click)="showRegisterModal()"></button>
+    </header>
+
+    <section class="modal-card-body">
+      <div class="tabs is-centered">
+        <ul>
+          <li [ngClass]="{'is-active': EmailPaswword}" (click)="tabEmailPass()"><a>Email and password</a> </li>
+          <li [ngClass]="{'is-active': !EmailPaswword}"><a>Personal information</a></li>
+        </ul>
+      </div>
+
+      <ng-container *ngIf="EmailPaswword; else elseTemplate">
+
+        <div class="field">
+          <span class="has-text-black has-text-weight-semibold is-family-sans-serif">Email address *</span>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input" type="email" placeholder="Email" [(ngModel)]="user.email" required>
+            <span class="icon is-small is-left">
+              <fa-icon icon="envelope"></fa-icon>
+            </span>
+            <span class="icon is-small is-right">
+              <fa-icon icon="check"></fa-icon>
+            </span>
+          </p>
+        </div>
+
+        <div class="field">
+          <span class="has-text-black has-text-weight-semibold is-family-sans-serif">Password *</span>
+          <p class="control has-icons-left">
+            <input class="input" type="password" placeholder="Password" [(ngModel)]="user.password" required>
+            <span class="icon is-small is-left">
+              <fa-icon icon="lock"></fa-icon>
+            </span>
+          </p>
+        </div>
+
+      </ng-container>
+      <ng-template #elseTemplate>
+
+        <div class="field">
+          <span class="has-text-black has-text-weight-semibold is-family-sans-serif">Name *</span>
+          <div class="control">
+            <input class="input" type="text" placeholder="Name" [(ngModel)]="user.name" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="has-text-black has-text-weight-semibold is-family-sans-serif">Lastname *</span>
+          <div class="control">
+            <input class="input" type="text" placeholder="Lastname" [(ngModel)]="user.lastname" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="has-text-black has-text-weight-semibold is-family-sans-serif">User name *</span>
+          <div class="control">
+            <input class="input" type="text" placeholder="User name" [(ngModel)]="user.userName" required>
+          </div>
+        </div>
+      </ng-template>
+    </section>
+
+    <footer class="modal-card-foot has-background-white">
+      <button class="button is-success is-medium is-fullwidth" [ngClass]="{'is-sr-only': saveUser}"
+        (click)="nextStep(user)"> Next step</button>
+      <button class="button is-success is-medium is-fullwidth" [ngClass]="{'is-sr-only': !saveUser}"
+        (click)="register(user)">Create an account</button>
+      <button class="button is-medium is-fullwidth" [ngClass]="{'is-sr-only': !saveUser}"
+        (click)="showRegisterModal()">Cancel</button>
+    </footer>
+
+  </div>
+</div>
