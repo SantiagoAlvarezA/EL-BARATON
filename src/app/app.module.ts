@@ -55,10 +55,6 @@ const appRoutes: Routes = [
 
     FontAwesomeModule,
 
-
-    
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]

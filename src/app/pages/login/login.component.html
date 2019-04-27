@@ -1,37 +1,42 @@
 <div class="modal has-background-white" [ngClass]="{'is-active': loginModal}">
   <div class="modal-background" (click)="showLoginModal()"></div>
   <div class="modal-card">
-    <header class="modal-card-head has-background-white">
-      <p class="modal-card-title">Login</p>
-      <button class="delete" aria-label="close" (click)="showLoginModal()"></button>
-    </header>
-    <section class="modal-card-body">
-      <div class="field">
-        <span class="has-text-black has-text-weight-semibold is-family-sans-serif">Username or email address</span>
-        <p class="control has-icons-left has-icons-right">
+    <form #form="ngForm" (submit)="login(form)">
+      <header class="modal-card-head has-background-white">
+        <p class="modal-card-title">Login</p>
+        <button class="delete" aria-label="close" (click)="showLoginModal()"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="field">
+          <span class="has-text-black has-text-weight-semibold is-family-sans-serif">Username or email address</span>
+          <p class="control has-icons-left has-icons-right">
 
-          <input class="input" type="email" placeholder="Email" [(ngModel)]="user.email" >
-          <span class="icon is-small is-left">
-            <fa-icon icon="envelope"></fa-icon>
-          </span>
-          <span class="icon is-small is-right">
-            <fa-icon icon="check"></fa-icon>
-          </span>
-        </p>
-      </div>
-      <div class="field">
-        <span class="has-text-black has-text-weight-semibold is-family-sans-serif">Password</span>
-        <p class="control has-icons-left">
-          <input class="input" type="password" placeholder="Password" [(ngModel)]="user.password" >
-          <span class="icon is-small is-left">
-            <fa-icon icon="lock"></fa-icon>
-          </span>
-        </p>
-      </div>
-    </section>
-    <footer class="modal-card-foot has-background-white">
-      <button class="button is-success is-medium is-fullwidth" (click)="login(user)">Login</button>
-      <button class="button is-medium is-fullwidth" (click)="createAnAcount()">Create an account</button>
-    </footer>
+            <input class="input" type="email" placeholder="Email" id="email" #email (keyup)="pres(email)" name="email" [(ngModel)]="user.email"
+              required>
+            <span class="icon is-small is-left">
+              <fa-icon icon="envelope"></fa-icon>
+            </span>
+            <span class="icon is-small is-right">
+              <fa-icon icon="check"></fa-icon>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <span class="has-text-black has-text-weight-semibold is-family-sans-serif">Password</span>
+          <p class="control has-icons-left">
+            <input class="input" type="password" minlength="6" placeholder="Password" id="password" name="password"
+              [(ngModel)]="user.password" required>
+            <span class="icon is-small is-left">
+              <fa-icon icon="lock"></fa-icon>
+            </span>
+          </p>
+        </div>
+
+      </section>
+      <footer class="modal-card-foot has-background-white">
+        <button class="button is-success is-medium is-fullwidth" type="submit">Login</button>
+        <button class="button is-medium is-fullwidth" (click)="createAnAcount()">Create an account</button>
+      </footer>
+    </form>
   </div>
 </div>

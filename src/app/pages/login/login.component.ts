@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../interfaces/user.interface';
 import { AuthService } from '../../services/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -37,13 +38,23 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['register']);
   }
 
-  login(user: User) {
-    console.log(user);
-    this.auth.signIn(user.email, user.password);
+  login(form: NgForm) {
+
+    if (form.valid) {
+      this.auth.signIn(this.user.email, this.user.password);
+
+    } else {
+      console.log("form no valid");
+
+    }
   }
 
   signOut() {
     this.auth.signOut();
+  }
+  pres(h) {
+    console.log(h.value);
+
   }
 
 }
