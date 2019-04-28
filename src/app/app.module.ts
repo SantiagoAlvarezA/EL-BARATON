@@ -6,10 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
 
 import { RouterModule, Routes } from '@angular/router';
 import { Page404nofoundComponent } from './pages/page404nofound/page404nofound.component';
@@ -22,6 +22,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { LoginComponent } from './pages/login/login.component';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AsideComponent } from './pages/aside/aside.component';
+import { ProductsComponent } from './pages/products/products.component';
 library.add(fas);
 
 
@@ -29,6 +32,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   {path: 'register', component:RegisterComponent },
   {path: 'login', component:LoginComponent },
+  {path: 'products/:sublevel_id', component:ProductsComponent },
   { path: '**', component: Page404nofoundComponent }
 ]
 
@@ -41,6 +45,8 @@ const appRoutes: Routes = [
     HomeComponent,
     RegisterComponent,
     LoginComponent,
+    AsideComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,10 +55,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, { useHash: true }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireDatabaseModule,
-    AngularFireAuthModule,
-
     FontAwesomeModule,
 
   ],

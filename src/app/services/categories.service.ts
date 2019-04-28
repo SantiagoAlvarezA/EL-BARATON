@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
+import { database } from 'firebase';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
 
-  constructor(private db: AngularFireDatabase, ) {
+  constructor(private db: AngularFireDatabase) {
 
   }
 
+  searchCat() {
 
-  searchCat(id) {
-    this.db.database.ref('categories').on('child_added', snap => {
-      console.log(snap.child('sublevels').val());
-    });
+    return this.db.list('categories').valueChanges();
   }
 }
