@@ -1,21 +1,30 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Product } from '../interfaces/products.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase) {
+
+  }
 
 
   getProducts() {
     return this.db.list('products').valueChanges();
   }
 
-  getProductsBySublevelid(sublevel_id) {
-    this.db.database.ref('products').orderByChild('sublevel_id').equalTo(sublevel_id).once('value', snap => {
-      console.log(snap.val());
+  async getProductsBySublevelid(sublevel_id) {
+    var products: Array<any> = [];
+    this.db.database.ref('products').orderByChild('sublevel_id').equalTo(sublevel_id).on('child_added', snap => {
+      products.push(snap.val())
+    });
+
+    return await new Observable(observer => {
+      setInterval(() => observer.next(products))
     });
   }
 }

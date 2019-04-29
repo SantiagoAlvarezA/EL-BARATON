@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -8,14 +9,31 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductsComponent implements OnInit {
 
-  items: any = null;
-  constructor(private productsService: ProductsService) {
-    this.items = productsService.getProducts();
+  sublevel_id: number;
+  items = null;
+
+  constructor(private productsService: ProductsService, private activatedRoute: ActivatedRoute) {
+
+
+    this.activatedRoute.url
+      .subscribe(url => {
+        this.productsService.getProductsBySublevelid(parseInt(url[1].path)).then(items => {
+          this.items = items;
+          console.log(this.items);
+        })
+      });
   }
 
   ngOnInit() {
+
+
   }
 
+  load() {
+
+
+
+  }
 
 
 }

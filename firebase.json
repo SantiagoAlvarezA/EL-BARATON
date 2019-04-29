@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/EL-BARATON",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
