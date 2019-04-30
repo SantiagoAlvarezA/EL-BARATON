@@ -27,4 +27,19 @@ export class ProductsService {
       setInterval(() => observer.next(products))
     });
   }
+
+
+  getProduct(id) {
+
+    var product: Array<any> = [];
+    this.db.database.ref('products').orderByChild('id').equalTo(id).once('value', snap => snap)
+      .then(snap => {
+        product.push(snap.val());
+      });
+    return new Observable(observer => {
+      setInterval(() => observer.next(product));
+    });
+  }
+
+
 }

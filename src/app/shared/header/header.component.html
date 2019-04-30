@@ -21,8 +21,12 @@
         <div class="navbar-end">
 
             <div class="navbar-item " [ngClass]="{'is-sr-only': !isAuthenticated}">
-                <a class="button is-fullwidth is-primary">
-                    <fa-icon icon="shopping-cart" class="fa-lg"> </fa-icon>
+                <a class="button is-fullwidth is-primary" [routerLink]="[ '/car' ]">
+
+
+                    <fa-icon icon="shopping-cart" class="fa-lg"></fa-icon>
+                    <p class="heading ml-1">  {{totalCar | async}} </p>
+
                 </a>
             </div>
 

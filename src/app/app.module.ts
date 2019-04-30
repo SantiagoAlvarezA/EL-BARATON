@@ -25,14 +25,16 @@ import { LoginComponent } from './pages/login/login.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AsideComponent } from './pages/aside/aside.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { CarComponent } from './pages/car/car.component';
 library.add(fas);
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  {path: 'register', component:RegisterComponent },
-  {path: 'login', component:LoginComponent },
-  {path: 'products/:sublevel_id', component:ProductsComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'products/:sublevel_id', component: ProductsComponent },
+  { path: 'car', component: CarComponent },
   { path: '**', component: Page404nofoundComponent }
 ]
 
@@ -47,6 +49,7 @@ const appRoutes: Routes = [
     LoginComponent,
     AsideComponent,
     ProductsComponent,
+    CarComponent,
   ],
   imports: [
     BrowserModule,

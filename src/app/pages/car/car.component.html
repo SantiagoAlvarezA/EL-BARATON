@@ -1,0 +1,14 @@
+<div class="columns m-1 is-multiline" *ngIf=" isAuthenticated">
+  <div class="column  is-half-tablet is-one-third-desktop is-one-quarter-fullhd" *ngFor="let car of cars | async">
+
+    <div class="box level is-mobile is-hover">
+      <div class="level-item has-text-centered">
+        
+        <div>
+          <p class="heading"> {{car.name}}</p>
+          <p class="title">{{car.quantity}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

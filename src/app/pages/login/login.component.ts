@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit {
   signOut() {
     this.auth.signOut();
   }
+
   pres(h) {
     console.log(h.value);
-
   }
 
 }
