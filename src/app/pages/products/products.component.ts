@@ -58,9 +58,9 @@ export class ProductsComponent implements OnInit {
 
   }
 
-  showModalProd(item) {
+  showModalProd(item: Product) {
 
-    if (this.isAuthenticated) {
+    if (this.isAuthenticated && item.available) {
       this.prod = item;
       this.quantity = 1;
       this.modalProd = !this.modalProd;
@@ -108,10 +108,17 @@ export class ProductsComponent implements OnInit {
   }
 
   noAuth() {
-    this.Toast.fire({
-      type: 'error',
-      title: 'Unauthenticated user'
-    });
+    if (!this.isAuthenticated) {
+      this.Toast.fire({
+        type: 'error',
+        title: 'Unauthenticated user'
+      });
+    } else {
+      this.Toast.fire({
+        type: 'warning',
+        title: 'Tis product not available'
+      });
+    }
     this.prod = {};
     this.car = {};
     this.quantity = 1;
