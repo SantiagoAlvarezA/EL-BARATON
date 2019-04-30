@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, Params } from '@angular/router';
 import { Product } from '../../interfaces/products.interface';
 import { Car } from 'src/app/interfaces/car.interface';
 import { AuthService } from '../../services/auth.service';
@@ -15,9 +15,9 @@ import Swal from 'sweetalert2';
 export class ProductsComponent implements OnInit {
   Toast = Swal.mixin({
     toast: true,
-    position: 'top-end',
+    position: 'bottom',
     showConfirmButton: false,
-    timer: 3000
+    timer: 2000
   });
 
 
@@ -44,13 +44,12 @@ export class ProductsComponent implements OnInit {
       }
     });
 
-
-    this.activatedRoute.url
-      .subscribe(url => {
-        this.productsService.getProductsBySublevelid(parseInt(url[1].path)).then(items => {
-          this.items = items;
-        })
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.productsService.getProductsBySublevelid(parseInt(params.sublevel_id)).then(items => {
+        this.items = items;
       });
+    });
+
   }
 
   ngOnInit() {
@@ -116,7 +115,7 @@ export class ProductsComponent implements OnInit {
     } else {
       this.Toast.fire({
         type: 'warning',
-        title: 'Tis product not available'
+        title: 'This product not available'
       });
     }
     this.prod = {};

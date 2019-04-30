@@ -16,9 +16,9 @@ export class HomeComponent implements OnInit {
 
   Toast = Swal.mixin({
     toast: true,
-    position: 'top-end',
+    position: 'bottom',
     showConfirmButton: false,
-    timer: 3000
+    timer: 2000
   });
 
   items: any = null;

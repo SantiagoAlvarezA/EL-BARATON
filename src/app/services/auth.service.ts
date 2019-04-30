@@ -11,9 +11,9 @@ export class AuthService {
 
   Toast = Swal.mixin({
     toast: true,
-    position: 'top-end',
+    position: 'bottom',
     showConfirmButton: false,
-    timer: 3000
+    timer: 2000
   });
   constructor(private angularFireAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) {
 

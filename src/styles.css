@@ -2,6 +2,7 @@
 
 @import 'bulma/css/bulma.css';
 /* @import '~bulma-extensions/bulma-timeline/dist/css/bulma-timeline.min.css'; */
+
 .is-hover:hover{
     transform: scale(1.05);
 }

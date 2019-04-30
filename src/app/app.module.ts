@@ -23,7 +23,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { LoginComponent } from './pages/login/login.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AsideComponent } from './pages/aside/aside.component';
+import { AsideComponent } from './shared/aside/aside.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { CarComponent } from './pages/car/car.component';
 library.add(fas);
