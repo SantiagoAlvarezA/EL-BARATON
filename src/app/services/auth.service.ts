@@ -23,7 +23,7 @@ export class AuthService {
     return this.angularFireAuth.authState;
   }
 
-  public signIn = (email='', password='') => {
+  public signIn = (email = '', password = '') => {
 
     this.angularFireAuth.auth.signInWithEmailAndPassword(email, password)
       .then((response) => {
@@ -44,11 +44,11 @@ export class AuthService {
 
   public signOut() {
     this.angularFireAuth.auth.signOut();
-    this.router.navigate(['']);
     this.Toast.fire({
       type: 'success',
       title: 'A cerrado sesión con exito'
-    })
+    });
+    this.router.navigate(['/']);
   }
 
   public register = (email, password, user) => {

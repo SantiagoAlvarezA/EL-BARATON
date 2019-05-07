@@ -1,14 +1,29 @@
 <div class="columns m-1 is-multiline" *ngIf=" isAuthenticated">
-  <div class="column  is-half-tablet is-one-third-desktop is-one-quarter-fullhd" *ngFor="let car of cars | async">
-
-    <div class="box level is-mobile is-hover">
-      <div class="level-item has-text-centered">
-        
-        <div>
-          <p class="heading"> {{car.name}}</p>
-          <p class="title">{{car.quantity}}</p>
+  <div class="column  is-half-tablet is-one-third-desktop is-one-quarter-fullhd" *ngFor="let car of cars  | async">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="https://cdn.hipwallpaper.com/i/8/76/NK3Z5R.jpg" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="content">
+          <div class="level has-arrow-separator is-mobile ">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">{{car.name}}</p>
+                <p class="title">{{car.quantity}} </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <footer class="card-footer">
+        <a class="card-footer-item has-text-black" (click)="buy(car.product_id)">
+          Buy <fa-icon icon="money-check-alt" class="m-1"></fa-icon>
+        </a>
+      </footer>
     </div>
   </div>
 </div>

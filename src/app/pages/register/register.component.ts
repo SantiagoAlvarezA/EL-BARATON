@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
 
   }
   register(user: User) {
-    console.log(user);
+    
     this.auth.register(user.email, user.password, user);
     // this.router.navigate(['login']);
 
@@ -41,8 +41,7 @@ export class RegisterComponent implements OnInit {
   }
 
   nextStep(user: User) {
-    console.log(user);
-
+   
     this.EmailPaswword = false;
     this.saveUser = true;
   }

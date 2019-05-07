@@ -1,17 +1,17 @@
 <div class="columns is-multiline m-1">
 
     <div class="column is-one-third-desktop is-one-quarter-fullhd is-half-tablet" *ngFor="let item of items | async  ">
-        <div class="card is-hover">
+        <div class="card ">
             <div class="card-image" (click)="showModalProd(item)">
                 <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    <img src="https://cdn.hipwallpaper.com/i/8/76/NK3Z5R.jpg" alt="Placeholder image">
                 </figure>
             </div>
             <div class="card-content">
                 <div class="media">
                     <div class="media-left">
                         <figure class="image is-48x48">
-                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            <img src="https://cdn.hipwallpaper.com/i/8/76/NK3Z5R.jpg" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="media-content">
@@ -24,7 +24,7 @@
                 <p class="card-footer-item">
                     <span>
                         <ng-container *ngIf=" item.available; else elseTemplate">
-                            <a (click)="showModalProd(item)">
+                            <a class="has-text-black is-hover" (click)="showModalProd(item)">
                                 Add car
                                 <fa-icon icon="cart-plus"></fa-icon>
                             </a>
@@ -32,14 +32,6 @@
                         <ng-template #elseTemplate>
                             not available
                         </ng-template>
-                    </span>
-                </p>
-                <p class="card-footer-item">
-                    <span>
-                        <a>
-                            Add favorite
-                            <fa-icon icon="star"></fa-icon>
-                        </a>
                     </span>
                 </p>
             </footer>
@@ -53,14 +45,14 @@
         <div class="card">
             <div class="card-image">
                 <figure class="image is-2by1">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    <img src="https://cdn.hipwallpaper.com/i/8/76/NK3Z5R.jpg" alt="Placeholder image">
                 </figure>
             </div>
             <div class="card-content">
                 <div class="media">
                     <div class="media-left">
                         <figure class="image is-48x48">
-                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            <img src="https://cdn.hipwallpaper.com/i/8/76/NK3Z5R.jpg" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="media-content">
@@ -71,25 +63,25 @@
             </div>
             <footer class="card-footer">
                 <p class="card-footer-item" (click)="quantitySubtract()">
-                    <a>
+                    <a class="has-text-black">
                         <span>
                             <fa-icon icon="minus"></fa-icon>
                         </span>
                     </a>
                 </p>
                 <p class="card-footer-item ">
-                    <span>
+                    <span class="has-text-black">
                         <input class="input number" type="number" [(ngModel)]="quantity">
 
                     </span>
                 </p>
                 <p class="card-footer-item" (click)="quantityAdd()">
-                    <span>
+                    <span class="has-text-black">
                         <fa-icon icon="plus"></fa-icon>
                     </span>
                 </p>
                 <p class="card-footer-item is-2">
-                    <a  (click)="addCar()">
+                    <a class="has-text-black" (click)="addCar()">
                         <span>
                             Add
                             <fa-icon icon="cart-plus"></fa-icon>

@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Car } from '../interfaces/car.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,12 @@ export class CarService {
   car: Car = {};
   auth = false;
   uid = '';
+  Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom',
+    showConfirmButton: false,
+    timer: 2000
+  });
 
   constructor(private db: AngularFireDatabase, private authService: AuthService) {
     this.authService.isAuthenticated().subscribe(auth => {
@@ -25,32 +32,30 @@ export class CarService {
     })
   }
 
-  getTotal() {
-    var num: number;
+  getTotal(): Observable<any> {
     if (this.auth) {
-      this.db.database.ref('car')
-        .orderByChild('uid')
-        .equalTo(this.uid)
-        .once('value', snap => {
-          snap.numChildren();
-        }).then(snap => {
-          num = snap.numChildren();
-
-        });
+      return Observable.create((num) => {
+        setInterval(() => {
+          this.db.database.ref('car')
+            .orderByChild('uid')
+            .equalTo(this.uid)
+            .once('value', snap => {
+              snap.numChildren();
+            }).then(snap => {
+              num.next(snap.numChildren());
+            });
+        })
+      })
     }
-    return new Observable(observer => {
-      setInterval(() => observer.next(num));
-    });
   }
 
   setCar(car: Car) {
     this.db.database.ref('car/' + car.product_id).set(car);
   }
 
-  async getCar(uid) {
+  getCar(uid) {
 
     var car: Array<any> = [];
-
     this.db.database.ref('car')
       .orderByChild('uid')
       .equalTo(uid)
@@ -58,11 +63,18 @@ export class CarService {
         car.push(snap.val());
       });
 
-    return await new Observable(observer => {
-      setInterval(() => observer.next(car));
-    });
+    return Observable.create((observer) => {
+      setInterval(() => {
+        observer.next(car);
+      })
+    })
   }
 
-
-
+  setBuyCar(product_id: string) {
+    this.db.object('car/' + product_id).remove();
+    this.Toast.fire({
+      type: 'success',
+      title: 'Successfully completed buy'
+    })
+  }
 }

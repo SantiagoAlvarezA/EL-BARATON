@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CarService } from '../../services/car.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -12,14 +11,16 @@ export class HeaderComponent implements OnInit {
 
   navburger = false;
   isAuthenticated: boolean = false;
-
-  totalCar:Observable<any>;
+  totalCar:number;
 
   constructor(private auth: AuthService, private carService: CarService) {
     auth.isAuthenticated().subscribe((result) => {
       if (result && result.uid) {
         this.isAuthenticated = true;
-        this.totalCar = this.carService.getTotal();
+         this.carService.getTotal().subscribe(totalCar =>{
+           this.totalCar = totalCar;
+           
+         });
       } else {
         this.isAuthenticated = false;
       }
@@ -35,5 +36,7 @@ export class HeaderComponent implements OnInit {
 
   signOut() {
     this.auth.signOut();
+    this.isAuthenticated = false;
+    this.totalCar = 0;
   }
 }

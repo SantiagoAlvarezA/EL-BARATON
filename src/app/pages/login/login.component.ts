@@ -42,19 +42,13 @@ export class LoginComponent implements OnInit {
 
     if (form.valid) {
       this.auth.signIn(this.user.email, this.user.password);
-
-    } else {
-      console.log("form no valid");
-
-    }
+   }
   }
 
   signOut() {
     this.auth.signOut();
   }
 
-  pres(h) {
-    console.log(h.value);
-  }
+  
 
 }
