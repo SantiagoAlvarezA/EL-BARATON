@@ -23,9 +23,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
+  
   showRegisterModal() {
     this.registerModal = false;
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
 
   }
   register(user: User) {

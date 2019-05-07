@@ -1,7 +1,7 @@
 <div class="columns is-multiline m-1 ">
 
   <div class="column  is-one-third-desktop is-one-quarter-fullhd is-half-tablet" *ngFor="let item of items | async">
-    <div class="card is-hover">
+    <div class="card ">
       <div class="card-image" (click)="showModalProd(item)">
         <figure class="image is-4by3 is-marginless">
           <img src="https://cdn.hipwallpaper.com/i/8/76/NK3Z5R.jpg" alt="Placeholder image">
@@ -15,8 +15,9 @@
             </figure>
           </div>
           <div class="media-content">
-            <p class="title is-4">{{item.name}}</p>
-            <p class="subtitle is-6">{{item.price}}</p>
+            <p class="subtitle is-6">Cost: {{item.price}}</p>
+            <p class="title is-6">Product: {{item.name}}</p>
+            <p class="subtitle is-6">Quantity in stock: {{item.quantity}}</p>
           </div>
         </div>
       </div>
@@ -24,7 +25,7 @@
         <p class="card-footer-item">
           <span class="has-text-black">
             <ng-container *ngIf=" item.available; else elseTemplate">
-              <a class="has-text-black "  (click)="showModalProd(item)">
+              <a class="has-text-black " (click)="showModalProd(item)">
                 Add car
                 <fa-icon icon="cart-plus"></fa-icon>
               </a>
@@ -62,37 +63,21 @@
         </div>
       </div>
       <footer class="card-footer">
-        <p class="card-footer-item" (click)="quantitySubtract()">
-          <a class="has-text-black">
-            <span>
-              <fa-icon icon="minus"></fa-icon>
-            </span>
-          </a>
-        </p>
-        <p class="card-footer-item ">
 
+        <p class="card-footer-item ">
           <span class="has-text-black">
             <input class="input number has-text-black" type="number" [(ngModel)]="quantity">
           </span>
-
-        </p>
-        <p class="card-footer-item" (click)="quantityAdd()">
-
-          <a class="has-text-black">
-            <span class="has-text-black">
-              <fa-icon icon="plus"></fa-icon>
-            </span>
-          </a>
-
         </p>
         <p class="card-footer-item is-2">
-          <a  class="has-text-black" (click)="addCar()">
+          <a class="has-text-black" (click)="addCar()">
             <span>
               Add
               <fa-icon icon="cart-plus"></fa-icon>
             </span>
           </a>
         </p>
+        
       </footer>
     </div>
   </div>

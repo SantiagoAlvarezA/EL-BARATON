@@ -56,6 +56,24 @@ export class ProductsComponent implements OnInit {
 
 
   }
+  keyInput(value) {
+    try {
+      let number = parseInt(value);
+
+      if (Number.isNaN(number) || number <= 0) {
+        this.quantity = 1;
+        this.Toast.fire({
+          type: 'error',
+          title: 'you can only enter amounts greater than one'
+        });
+      }
+    } catch (error) {
+      this.quantity = 1;
+    }
+
+
+
+  }
 
   showModalProd(item: Product) {
 
@@ -69,22 +87,6 @@ export class ProductsComponent implements OnInit {
 
   }
 
-  quantityAdd() {
-    if (this.quantity < this.prod.quantity) {
-      this.quantity++;
-    } else {
-      this.quantity = this.prod.quantity
-    }
-
-  }
-  quantitySubtract() {
-    if (this.quantity > 0) {
-      this.quantity--;
-    } else {
-      this.quantity = 0;
-    }
-
-  }
   closeModal() {
     this.modalProd = false;
   }

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   showLoginModal() {
     this.loginModal = false;
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 
   createAnAcount() {

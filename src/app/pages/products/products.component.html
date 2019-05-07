@@ -62,22 +62,10 @@
                 </div>
             </div>
             <footer class="card-footer">
-                <p class="card-footer-item" (click)="quantitySubtract()">
-                    <a class="has-text-black">
-                        <span>
-                            <fa-icon icon="minus"></fa-icon>
-                        </span>
-                    </a>
-                </p>
                 <p class="card-footer-item ">
                     <span class="has-text-black">
-                        <input class="input number" type="number" [(ngModel)]="quantity">
+                        <input class="input number has-text-black" type="number" min="1" #value (keyup)="keyInput(value.value)" [(ngModel)]="quantity">
 
-                    </span>
-                </p>
-                <p class="card-footer-item" (click)="quantityAdd()">
-                    <span class="has-text-black">
-                        <fa-icon icon="plus"></fa-icon>
                     </span>
                 </p>
                 <p class="card-footer-item is-2">
@@ -89,8 +77,6 @@
                     </a>
                 </p>
             </footer>
-
-
         </div>
     </div>
     <button class="modal-close is-large" aria-label="close" (click)="closeModal()"></button>

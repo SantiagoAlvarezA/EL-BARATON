@@ -46,7 +46,7 @@ export class AuthService {
     this.angularFireAuth.auth.signOut();
     this.Toast.fire({
       type: 'success',
-      title: 'A cerrado sesión con exito'
+      title: 'A closed session with success'
     });
     this.router.navigate(['/']);
   }
@@ -60,14 +60,14 @@ export class AuthService {
         this.db.database.ref('users/' + user.uid).set(user);
         this.Toast.fire({
           type: 'success',
-          title: 'El usuario se a registrado con exito'
+          title: 'The user has successfully registered'
         })
-        this.router.navigate(['']);
+        this.router.navigate(['/']);
       })
       .catch((error) => {
         this.Toast.fire({
           type: 'error',
-          title: 'Se a presentado un error al momento de registrar el usuario'
+          title: 'An error was presented when registering the user'
         })
       });
   }

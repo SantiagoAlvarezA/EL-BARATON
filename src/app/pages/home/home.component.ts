@@ -63,22 +63,6 @@ export class HomeComponent implements OnInit {
 
   }
 
-  quantityAdd() {
-    if (this.quantity < this.prod.quantity) {
-      this.quantity++;
-    } else {
-      this.quantity = this.prod.quantity
-    }
-
-  }
-  quantitySubtract() {
-    if (this.quantity > 0) {
-      this.quantity--;
-    } else {
-      this.quantity = 0;
-    }
-
-  }
   closeModal() {
     this.modalProd = false;
   }
