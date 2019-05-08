@@ -11,16 +11,15 @@ export class HeaderComponent implements OnInit {
 
   navburger = false;
   isAuthenticated: boolean = false;
-  totalCar:number;
+  totalCar = null;
+  user = null;
 
   constructor(private auth: AuthService, private carService: CarService) {
     auth.isAuthenticated().subscribe((result) => {
       if (result && result.uid) {
         this.isAuthenticated = true;
-         this.carService.getTotal().subscribe(totalCar =>{
-           this.totalCar = totalCar;
-           
-         });
+        this.totalCar = this.carService.getTotal();
+        this.user = this.auth.getUser(result.uid);
       } else {
         this.isAuthenticated = false;
       }

@@ -18,15 +18,13 @@
     <div id="navbarBasicExample" class="navbar-menu has-text-centered" [ngClass]="{'is-active': navburger}">
 
 
-        <div class="navbar-end">
+        <div class="navbar-end has-text-black">
 
             <div class="navbar-item " [ngClass]="{'is-sr-only': !isAuthenticated}">
+                <span>{{user | async}}</span>
                 <a class="button is-fullwidth is-primary" [routerLink]="[ '/car' ]">
-
-
                     <fa-icon icon="shopping-cart" class="fa-lg"></fa-icon>
-                    <p class="heading ml-1">  {{totalCar }} </p>
-
+                    <p class="heading ml-1"> {{totalCar | async}} </p>
                 </a>
             </div>
 

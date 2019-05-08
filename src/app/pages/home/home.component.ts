@@ -46,8 +46,31 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  search() {
+
+  keyInput(value, maxValue) {
+
+    try {
+      let number = parseInt(value);
+      if (number > maxValue) {
+        this.quantity = maxValue;
+        this.Toast.fire({
+          type: 'warning',
+          title: 'The quantity requested exceeds the available quantity in stock'
+        });
+      }
+
+      if (Number.isNaN(number) || number <= 0) {
+        this.quantity = 1;
+        this.Toast.fire({
+          type: 'error',
+          title: 'you can only enter amounts greater than one'
+        });
+      }
+    } catch (error) {
+      this.quantity = 1;
+    }
   }
+
 
 
 

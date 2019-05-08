@@ -45,9 +45,7 @@ export class ProductsComponent implements OnInit {
     });
 
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.productsService.getProductsBySublevelid(parseInt(params.sublevel_id)).then(items => {
-        this.items = items;
-      });
+     this.items = this.productsService.getProductsBySublevelid(parseInt(params.sublevel_id));
     });
 
   }
@@ -56,11 +54,21 @@ export class ProductsComponent implements OnInit {
 
 
   }
-  keyInput(value) {
+  keyInput(value, maxValue) {
+
+
+
     try {
       let number = parseInt(value);
+      if( number > maxValue){
+        this.quantity = maxValue;
+        this.Toast.fire({
+          type: 'warning',
+          title: 'The quantity requested exceeds the available quantity in stock'
+        });
+      }
 
-      if (Number.isNaN(number) || number <= 0) {
+      if (Number.isNaN(number) || number <= 0 ) {
         this.quantity = 1;
         this.Toast.fire({
           type: 'error',

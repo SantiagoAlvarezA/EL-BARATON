@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
 import Swal from 'sweetalert2';
+import { User } from '../interfaces/user.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,7 @@ export class AuthService {
     showConfirmButton: false,
     timer: 2000
   });
+  user;
   constructor(private angularFireAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) {
 
   }
@@ -70,6 +73,18 @@ export class AuthService {
           title: 'An error was presented when registering the user'
         })
       });
+  }
+
+
+  getUser(uid: string = '') {
+    return Observable.create(observer => {
+      setInterval(() => {
+        this.db.database.ref('users').orderByChild('uid').equalTo(uid).on('child_added', snap => {
+          observer.next(snap.val().name);
+        });
+      });
+    });
+
   }
 
 }
