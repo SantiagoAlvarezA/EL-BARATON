@@ -30,10 +30,11 @@ export class ProductsComponent implements OnInit {
   quantity = 1;
   car: Car = {};
   uid = '';
-
+  load = false;
   isAuthenticated = false;
 
   constructor(private productsService: ProductsService, private activatedRoute: ActivatedRoute, private authService: AuthService, private carService: CarService, private router: Router) {
+
 
     this.authService.isAuthenticated().subscribe(auth => {
       if (auth && auth.uid) {
@@ -45,7 +46,7 @@ export class ProductsComponent implements OnInit {
     });
 
     this.activatedRoute.params.subscribe((params: Params) => {
-     this.items = this.productsService.getProductsBySublevelid(parseInt(params.sublevel_id));
+      this.items = this.productsService.getProductsBySublevelid(parseInt(params.sublevel_id));
     });
 
   }
@@ -60,7 +61,7 @@ export class ProductsComponent implements OnInit {
 
     try {
       let number = parseInt(value);
-      if( number > maxValue){
+      if (number > maxValue) {
         this.quantity = maxValue;
         this.Toast.fire({
           type: 'warning',
@@ -68,7 +69,7 @@ export class ProductsComponent implements OnInit {
         });
       }
 
-      if (Number.isNaN(number) || number <= 0 ) {
+      if (Number.isNaN(number) || number <= 0) {
         this.quantity = 1;
         this.Toast.fire({
           type: 'error',
@@ -100,11 +101,14 @@ export class ProductsComponent implements OnInit {
   }
 
   addCar() {
+    this.car = {};
     if (this.isAuthenticated) {
       this.car.product_id = this.prod.id;
       this.car.quantity = this.quantity;
       this.car.uid = this.uid;
       this.car.name = this.prod.name;
+      this.car.url = this.prod.url;
+
       this.carService.setCar(this.car);
 
       this.prod = {};
@@ -132,4 +136,5 @@ export class ProductsComponent implements OnInit {
     this.car = {};
     this.quantity = 1;
   }
+
 }

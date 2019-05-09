@@ -1,11 +1,14 @@
-<div class="content has-text-centered">
+<div class="content has-text-centered" *ngIf="_infoAuthor.load">
   <p>
-    <fa-icon icon="envelope" aria-hidden="true"></fa-icon><a> alvarez75@live.com.mx <b>or</b> aalvarez3570@gmail.com</a>
+    <fa-icon icon="envelope" aria-hidden="true"></fa-icon><a> {{_infoAuthor.infoAuthor.email}} <b>or</b> {{_infoAuthor.infoAuthor.secondEmail}}</a>
   </p>
   <p>
-    <fa-icon icon="phone" aria-hidden="true"></fa-icon><a> +57 3186690949 <b>or</b> +57 3172735535</a>
+    <fa-icon icon="phone" aria-hidden="true"></fa-icon><a> {{_infoAuthor.infoAuthor.phone}} <b>or</b> {{_infoAuthor.infoAuthor.secondPhone}}</a>
   </p>
   <p>
-    <fa-icon icon="copyright" aria-hidden="true"></fa-icon><a> Santiago Alvarez Alvarez</a>
+    <fa-icon icon="copyright" aria-hidden="true"></fa-icon><a> {{_infoAuthor.infoAuthor.name}}</a>
+  </p>
+  <p>
+    <fa-icon icon="code-branch" aria-hidden="true"></fa-icon><a  target="_blank" href="{{_infoAuthor.infoAuthor.github}}"> {{_infoAuthor.infoAuthor.github}}</a>
   </p>
 </div>

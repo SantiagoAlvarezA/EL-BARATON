@@ -3,4 +3,5 @@ export interface Car {
     product_id?: string;
     name?: string;
     quantity?: number;
+    url?:string;
 }

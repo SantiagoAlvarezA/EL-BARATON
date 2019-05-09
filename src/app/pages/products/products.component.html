@@ -1,22 +1,23 @@
 <div class="columns is-multiline m-1">
 
     <div class="column is-one-third-desktop is-one-quarter-fullhd is-half-tablet" *ngFor="let item of items | async  ">
-        <div class="card ">
+        <div class="card animated fadeIn">
             <div class="card-image" (click)="showModalProd(item)">
                 <figure class="image is-4by3">
-                    <img src="https://cdn.hipwallpaper.com/i/8/76/NK3Z5R.jpg" alt="Placeholder image">
+                    <img src="{{item.url}}" alt="Placeholder image">
                 </figure>
             </div>
             <div class="card-content">
                 <div class="media">
                     <div class="media-left">
                         <figure class="image is-48x48">
-                            <img src="https://cdn.hipwallpaper.com/i/8/76/NK3Z5R.jpg" alt="Placeholder image">
+                            <img src="{{item.url}}" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="media-content">
-                        <p class="title is-4">{{item.name}}</p>
-                        <p class="subtitle is-6">{{item.price}}</p>
+                        <p class="subtitle is-6">Cost: {{item.price}}</p>
+                        <p class="title is-4">Product: {{item.name}}</p>
+                        <p class="subtitle is-6">Quantity in stock: {{item.quantity}}</p>
                     </div>
                 </div>
             </div>
@@ -39,23 +40,33 @@
     </div>
 </div>
 
-<div class="modal" [ngClass]="{'is-active': modalProd}">
+<div class="modal animated fadeIn" [ngClass]="{'is-active': modalProd}">
     <div class="modal-background" (click)="closeModal()"></div>
     <div class="modal-content">
         <div class="card">
             <div class="card-image">
                 <figure class="carrusel is-2by1">
                     <ul>
-                        <li><img src="https://cdn.hipwallpaper.com/i/8/76/NK3Z5R.jpg" alt="Placeholder image"></li>
-                        <li><img src="https://cdn.pixabay.com/photo/2015/02/06/01/14/wallpaper-625623__340.png"
-                                alt="Placeholder image"></li>
-                        <li><img src="https://cdn.pixabay.com/photo/2017/02/15/07/32/desktop-2067806__340.png"
-                                alt="Placeholder image"></li>
-                        <li><img src="https://cdn.pixabay.com/photo/2017/02/14/08/50/desktop-2065337__340.png"
-                                alt="Placeholder image"></li>
-                        <li><img src="https://cdn.pixabay.com/photo/2014/11/25/10/16/wave-545056__340.jpg"
+                        <li>
+                            <img src="{{prod.url}}" alt="Placeholder image">
+                        </li>
+                        <li>
+                            <img src="https://cdn.pixabay.com/photo/2016/07/11/12/43/about-1509628__340.jpg"
                                 alt="Placeholder image">
                         </li>
+                        <li>
+                            <img src="https://cdn.pixabay.com/photo/2015/04/04/22/07/stone-707173__340.jpg"
+                                alt="Placeholder image">
+                        </li>
+                        <li>
+                            <img src="https://cdn.pixabay.com/photo/2017/03/31/08/41/green-skin-2190694__340.jpg"
+                                alt="Placeholder image">
+                        </li>
+                        <li>
+                            <img src="https://cdn.pixabay.com/photo/2014/06/16/23/39/green-370121__340.png"
+                                alt="Placeholder image">
+                        </li>
+
                     </ul>
                 </figure>
             </div>
@@ -63,12 +74,13 @@
                 <div class="media">
                     <div class="media-left">
                         <figure class="image is-48x48">
-                            <img src="https://cdn.hipwallpaper.com/i/8/76/NK3Z5R.jpg" alt="Placeholder image">
+                            <img src="{{prod.url}}" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="media-content">
-                        <p class="title is-4">{{prod.name}}</p>
-                        <p class="subtitle is-6">{{prod.price}}</p>
+                        <p class="subtitle is-6">Cost: {{prod.price}}</p>
+                        <p class="title is-4">Product: {{prod.name}}</p>
+                        <p class="subtitle is-6">Quantity in stock: {{prod.quantity}}</p>
                     </div>
                 </div>
             </div>

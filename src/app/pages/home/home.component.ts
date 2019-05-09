@@ -28,9 +28,14 @@ export class HomeComponent implements OnInit {
   car: Car = {};
   uid = '';
   isAuthenticated = false;
+  load: boolean = false;
+  products = [];
+  allProducts = [];
+  producFilter = [];
 
   constructor(private productsService: ProductsService, private activatedRoute: ActivatedRoute, private authService: AuthService, private carService: CarService, private router: Router) {
-    this.items = this.productsService.getProducts();
+
+    this.loadProducts();
     this.authService.isAuthenticated().subscribe(auth => {
       if (auth && auth.uid) {
         this.isAuthenticated = true;
@@ -42,6 +47,16 @@ export class HomeComponent implements OnInit {
 
 
   }
+
+  loadProducts() {
+    this.items = this.productsService.getProducts().subscribe(products => {
+      this.products = products;
+      this.allProducts = products;
+      this.producFilter = products;
+      this.load = true;
+    });
+  }
+
 
   ngOnInit() {
   }
@@ -71,9 +86,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
-
-
   showModalProd(item: Product) {
 
     if (this.isAuthenticated && item.available) {
@@ -91,11 +103,13 @@ export class HomeComponent implements OnInit {
   }
 
   addCar() {
+    this.car = {};
     if (this.isAuthenticated) {
       this.car.product_id = this.prod.id;
       this.car.quantity = this.quantity;
       this.car.uid = this.uid;
       this.car.name = this.prod.name;
+      this.car.url = this.prod.url;
 
       this.carService.setCar(this.car);
       this.prod = {};
@@ -103,7 +117,6 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/car']);
     } else {
       this.noAuth();
-
     }
   }
 
@@ -120,5 +133,52 @@ export class HomeComponent implements OnInit {
       });
     }
     this.router.navigate(['/']);
+  }
+
+
+
+  search(termino: string) {
+    var productosFiltrado = [];
+    termino = termino.toLocaleLowerCase();
+    this.allProducts.forEach(prod => {
+      const tituloLower = prod.name.toLocaleLowerCase();
+
+      if (prod.name.indexOf(termino) >= 0 || tituloLower.indexOf(termino) >= 0) {
+        productosFiltrado.push(prod);
+      }
+    });
+
+    this.products = productosFiltrado;
+  }
+
+  productsAvaibles() {
+    var productosFiltrado = [];
+    this.allProducts = this.producFilter;
+    this.allProducts.forEach(prod => {
+      if (prod.available) {
+        productosFiltrado.push(prod);
+      }
+    });
+
+    this.products = productosFiltrado;
+    this.allProducts = this.products;
+  }
+
+  productsUnavaibles() {
+    var productosFiltrado = [];
+    this.allProducts = this.producFilter;
+    this.allProducts.forEach(prod => {
+      if (!prod.available) {
+        productosFiltrado.push(prod);
+      }
+    });
+
+    this.products = productosFiltrado;
+    this.allProducts = this.products;
+
+  }
+  productsAll() {
+    this.allProducts = this.producFilter;
+    this.products = this.producFilter;
   }
 }

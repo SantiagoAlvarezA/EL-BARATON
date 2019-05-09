@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfoAuthorService } from '../../services/info-author.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-
-  constructor() { }
+  load:boolean = false;
+   constructor(public _infoAuthor: InfoAuthorService) {
+    this.load = _infoAuthor.load;
+    
+  }
 
   ngOnInit() {
   }

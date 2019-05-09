@@ -5,4 +5,5 @@ export interface Product {
   price?: string;
   quantity?: number;
   sublevel_id?: number;
+  url?: string;
 }
