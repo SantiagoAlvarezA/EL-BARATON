@@ -6,19 +6,66 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## STEPS FOR COMPILER THIS PROJECT 
 
-## 1
+### 1
 clone this repository from `https://github.com/SantiagoAlvarezA/EL-BARATON.git` or Download 
 
-## 2
+### 2
 Run command `npm install`
 
-## 3 Development server
+### 3 Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.  The app will automatically reload if you change any of the source files.
 
-## This project is alojated in firebase host
+### This project is alojated in firebase host
 
 Available on the firebase host. Navegate to [EL Bataton](https://tiendaselbaraton.firebaseapp.com/#/) 
+
+
+## JSON Schemas
+
+### Categories schema
+"Category":{
+  "id": number;
+  "name": string;
+  "sublevels"?: [{
+        "id": number;
+        "name": string;
+        "sublevels"?: Sublevel2[{
+                "id": number;
+                "name": string;
+                "sublevels"?: Sublevel[{
+                        "id": number;
+                        "name": string;
+                    }
+
+                ];
+            }
+        ];
+    }
+
+  ];
+}
+
+
+### Products schema
+"Product"  {
+  "available": boolean;
+  "id": string;
+  "name": string;
+  "price": string;
+  "quantity": number;
+  "sublevel_id": number;
+  "url": string;
+}
+
+### Car schema
+"Car": {
+    "uid": string;
+    "product_id": string;
+    "name": string;
+    "quantity": number;
+    "url":string;
+}
 
 
 
