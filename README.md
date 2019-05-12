@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.  The app 
 
 ## This project is alojated in firebase host
 
-Available on the firebase host. Navegate to `https://tiendaselbaraton.firebaseapp.com/#/` 
+Available on the firebase host. Navegate to [EL Bataton](https://tiendaselbaraton.firebaseapp.com/#/) 
 
 ## Code scaffolding
 
