@@ -2,13 +2,27 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
-## Development server
+
+
+## STEPS FOR COMPILER THIS PROJECT 
+
+## 1
+clone this repository from `https://github.com/SantiagoAlvarezA/EL-BARATON.git` or Download 
+
+## 2
+Run command `npm install`
+
+## 3 Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.  The app will automatically reload if you change any of the source files.
 
 ## This project is alojated in firebase host
 
 Available on the firebase host. Navegate to [EL Bataton](https://tiendaselbaraton.firebaseapp.com/#/) 
+
+
+
+
 
 ## Code scaffolding
 
