@@ -5,24 +5,24 @@
   <div></div>
 </div>
 
-<nav class="level has-background-light p-2 m-3" *ngIf="load">
+<nav class="level has-background-light p-2 m-3 is-desktop" *ngIf="load">
   <!-- Left side -->
-  <div class="level-left">
+  <div class="level-left is-desktop">
     <div class="level-item">
-      <button class="is-primary button" (click)="productsAll()">ALL</button>
+      <button class="is-primary button is-" (click)="productsAll()">ALL</button>
     </div>
     <div class="level-item">
-      <button class="is-primary button" (click)="productsAvaibles()">AVAILABLES</button>
+      <button class="is-primary button" (click)="available()">{{btnAvailables}}</button>
     </div>
-    <div class="level-item">
-      <button class="is-primary button" (click)="productsUnavaibles()">UNAVAILABLES</button>
-    </div>
+    <!-- <div class="level-item">
+      <button class="is-primary button is-6" (click)="orderByPrice()">{{btnText}}</button>
+    </div> -->
   </div>
 
   <!-- Right side -->
-  <div class="level-right">
+  <div class="level-right is-desktop" >
     <div class="level-item">
-      <input class="input is-rounded" type="text" placeholder="Rounded input" #value (keyup)="search(value.value)">
+      <input class="input is-rounded" type="text" placeholder="Search products" #value (keyup)="search(value.value)">
     </div>
   </div>
 </nav>

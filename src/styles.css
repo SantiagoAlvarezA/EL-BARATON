@@ -1369,8 +1369,8 @@
   display: flex;
   padding: 0;
   width: 500%;
-  animation-direction: alternate;
-  animation: animation 25s infinite;
+  animation-direction: alternate ;
+  animation: animation 25s infinite alternate;
 }
 
 .carrusel li {

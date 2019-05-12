@@ -32,9 +32,15 @@ export class HomeComponent implements OnInit {
   products = [];
   allProducts = [];
   producFilter = [];
+  btnText = '';
+  btnAvailables = '';
+  lowToHight = true;
+  avialables = true;
 
   constructor(private productsService: ProductsService, private activatedRoute: ActivatedRoute, private authService: AuthService, private carService: CarService, private router: Router) {
 
+    this.btnText = (this.lowToHight) ? 'HIGHT TO LOW' : 'LOW TO HIGHT';
+    this.btnAvailables = (this.lowToHight) ? 'AVAILABLES' : 'UNAVAILABLES';
     this.loadProducts();
     this.authService.isAuthenticated().subscribe(auth => {
       if (auth && auth.uid) {
@@ -177,8 +183,36 @@ export class HomeComponent implements OnInit {
     this.allProducts = this.products;
 
   }
+
+  available() {
+    this.avialables ? this.productsAvaibles() : this.productsUnavaibles();
+    this.avialables = !this.avialables;
+    this.btnAvailables = (this.avialables) ? 'AVAILABLES' : 'UNAVAILABLES';
+    this.lowToHight = true;
+    this.btnText = (this.lowToHight) ? 'HIGHT TO LOW' : 'LOW TO HIGHT';
+
+  }
+
   productsAll() {
     this.allProducts = this.producFilter;
     this.products = this.producFilter;
+    this.avialables = true;
+    this.btnAvailables = (this.avialables) ? 'AVAILABLES' : 'UNAVAILABLES';
   }
+
+
+  // hightToLow() {
+   
+  // }
+  // LowTohight() {
+    
+  // }
+
+  // orderByPrice() {
+  //   this.lowToHight ? this.hightToLow() : this.LowTohight();
+  //   this.lowToHight = !this.lowToHight;
+  //   this.btnText = (this.lowToHight) ? 'HIGHT TO LOW' : 'LOW TO HIGHT';
+  // }
+
+
 }
