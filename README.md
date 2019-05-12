@@ -86,7 +86,19 @@ Available on the firebase host. Navegate to [EL Bataton](https://tiendaselbarato
     "url":"string"
 }
 ```
+### User schema
+```json
+ "User": 
+ {
+    "name": "string",
+    "uid": "string",
+    "email": "string",
+    "password": "string",
+    "userName": "string",
+    "lastname":"string",
+}
 
+```
 
 
 
