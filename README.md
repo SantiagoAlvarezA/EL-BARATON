@@ -24,18 +24,18 @@ Available on the firebase host. Navegate to [EL Bataton](https://tiendaselbarato
 ## JSON Schemas
 
 ### Categories schema
-"Category":{
-  "id": number;
-  "name": string;
-  "sublevels"?: [{
-        "id": number;
-        "name": string;
-        "sublevels"?: Sublevel2[{
-                "id": number;
-                "name": string;
-                "sublevels"?: Sublevel[{
-                        "id": number;
-                        "name": string;
+Category:{
+  id: number;
+  name: string;
+  sublevels?: [{
+        id: number;
+        name: string;
+        sublevels?: Sublevel2[{
+                id: number;
+                name: string;
+                sublevels?: Sublevel[{
+                        id: number;
+                        name: string;
                     }
 
                 ];
@@ -48,23 +48,23 @@ Available on the firebase host. Navegate to [EL Bataton](https://tiendaselbarato
 
 
 ### Products schema
-"Product"  {
-  "available": boolean;
-  "id": string;
-  "name": string;
-  "price": string;
-  "quantity": number;
-  "sublevel_id": number;
-  "url": string;
+Product  {
+  available: boolean;
+  id: string;
+  name: string;
+  price: string;
+  quantity: number;
+  sublevel_id: number;
+  url: string;
 }
 
 ### Car schema
-"Car": {
-    "uid": string;
-    "product_id": string;
-    "name": string;
-    "quantity": number;
-    "url":string;
+Car: {
+    uid: string;
+    product_id: string;
+    name: string;
+    quantity: number;
+    url:string;
 }
 
 
