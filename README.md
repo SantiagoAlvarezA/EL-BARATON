@@ -55,6 +55,7 @@ Available on the firebase host. Navegate to [EL Bataton](https://tiendaselbarato
   ],
 }
 ```
+Navegate to [Categories](https://tiendaselbaraton.firebaseio.com/categories.json)
 
 
 
@@ -74,6 +75,8 @@ Available on the firebase host. Navegate to [EL Bataton](https://tiendaselbarato
   "url": "string"
 }
 ```
+Navegate to [Products](https://tiendaselbaraton.firebaseio.com/products.json)
+
 
 ### Car schema
 ```json
@@ -86,6 +89,8 @@ Available on the firebase host. Navegate to [EL Bataton](https://tiendaselbarato
     "url":"string"
 }
 ```
+Navegate to [Car](https://tiendaselbaraton.firebaseio.com/car.json)
+
 ### User schema
 ```json
  "User": 
